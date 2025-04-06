@@ -8,7 +8,7 @@ const isTrainingModel = ref(false)
 const isShowMeaning = ref(true)
 const isAutoPlayWordAudio = ref(true)
 const isOnlyShowErrors = ref(false)
-const isFinishTraining = ref(false)
+// const isFinishTraining = ref(false)
 const isShowSource = ref(false)
 
 const trainingStats = ref('')
@@ -172,12 +172,12 @@ function getInputStyleClass(item) {
     normal: 'ml-4 inline-block border border-gray-300 rounded-lg bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 focus:border-blue-500 dark:bg-gray-700 dark:text-white focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500 dark:placeholder-gray-400',
     success: 'ml-4 bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 inline-block p-2.5 dark:bg-gray-700 dark:border-green-500',
   }
-  if (isFinishTraining.value) {
-    if (item.spellError)
-      return cls.error
-    if (item.spellValue.length > 0 && !item.spellError)
-      return cls.success
-  }
+  // if (isFinishTraining.value) {
+  if (item.spellError)
+    return cls.error
+  if (item.spellValue.length > 0 && !item.spellError)
+    return cls.success
+  // }
   return cls.normal
 }
 
@@ -336,8 +336,8 @@ function copyAllError() {
                           <input
                             :id="item.id" autocomplete="off" :class="getInputStyleClass(item)"
                             type="text"
-                            @focusout="onInputFoucsOut($event, item)" 
-                            @focusin="onInputFoucsIn($event, `vocabulary/audio/${category}/${item.word[0]}.mp3`)" 
+                            @focusout="onInputFoucsOut($event, item)"
+                            @focusin="onInputFoucsIn($event, `vocabulary/audio/${category}/${item.word[0]}.mp3`)"
                             @keydown="onInputKeydown"
                           >
                         </template>
@@ -387,13 +387,13 @@ function copyAllError() {
           </p>
         </div>
         <div v-if="isTrainingModel" class="flex-shrink-0">
-          <button
+          <!-- <button
             type="button"
             class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white dark:bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             @click="isFinishTraining = true"
           >
             完成练习
-          </button>
+          </button> -->
           <button
             type="button"
             class="ml-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white dark:bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
